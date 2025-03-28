@@ -1,4 +1,4 @@
 package com.mindera.school.dto;
 
-public class ProfessorDto {
+public class TeacherDto {
 }
