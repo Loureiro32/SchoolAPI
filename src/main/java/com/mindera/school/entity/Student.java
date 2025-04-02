@@ -1,10 +1,22 @@
 package com.mindera.school.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.sql.Date;
 
+/**
+ * Entity class representing a Student
+ * This class is used to map the Student table in the databae
+ */
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Student {
 
@@ -12,4 +24,16 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "firstname")
+    private String firstName;
+
+    @Column(name = "lastname")
+    private String lastName;
+
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "birthdate")
+    private Date birthdate;
 }
