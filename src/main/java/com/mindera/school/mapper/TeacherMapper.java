@@ -13,4 +13,6 @@ public interface TeacherMapper {
 
     TeacherDto ToTeacherDto(Teacher teacher);
 
+    Teacher ToTeacher(TeacherDto teacherDto);
+
 }
