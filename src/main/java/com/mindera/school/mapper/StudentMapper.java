@@ -17,4 +17,6 @@ public interface StudentMapper {
     List<StudentDto> ToStudentDtoList(List<Student> student);
 
     Student ToStudent(StudentDto studentDto);
+
+    List<Student> ToStudentList(List<StudentDto> studentDtoList);
 }
