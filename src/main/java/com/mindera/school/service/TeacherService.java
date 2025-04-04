@@ -2,6 +2,7 @@ package com.mindera.school.service;
 
 import com.mindera.school.dto.StudentDto;
 import com.mindera.school.dto.TeacherDto;
+import com.mindera.school.exception.TeacherNotFoundException;
 import com.mindera.school.mapper.StudentMapper;
 import com.mindera.school.mapper.TeacherMapper;
 import com.mindera.school.repository.StudentRepository;
@@ -23,7 +24,7 @@ public class TeacherService {
     }
 
     public TeacherDto getPersonalInfo(Long id){
-        return TeacherMapper.INSTANCE.ToTeacherDto(this.teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("Teacher not found")));
+        return TeacherMapper.INSTANCE.ToTeacherDto(this.teacherRepository.findById(id).orElseThrow(() -> new TeacherNotFoundException("Teacher", "id", id)));
     }
 
     public List<StudentDto> getAllStudents(){

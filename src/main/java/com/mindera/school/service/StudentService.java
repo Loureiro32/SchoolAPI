@@ -1,11 +1,11 @@
 package com.mindera.school.service;
 
 import com.mindera.school.dto.StudentDto;
+import com.mindera.school.exception.StudentNotFoundExecption;
 import com.mindera.school.mapper.StudentMapper;
 import com.mindera.school.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class StudentService {
@@ -17,7 +17,7 @@ public class StudentService {
     }
 
     public StudentDto getPersonalInfo(Long id){
-        return StudentMapper.INSTANCE.ToStudentDto(this.studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found")));
+        return StudentMapper.INSTANCE.ToStudentDto(this.studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundExecption("Student", "id", id)));
     }
 
 

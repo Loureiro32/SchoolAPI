@@ -16,7 +16,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/login", "/api/v1/register", "/swagger-ui/**", "/api-docs", "/swagger-ui/index.html", "/v2/api-docs").permitAll()
+                        .requestMatchers("/api/v1/login",
+                                "/api/v1/register",
+                                "/swagger-ui/**",
+                                "/api-docs",
+                                "/swagger-ui/index.html",
+                                "/v2/api-docs").permitAll()
                         .requestMatchers("/api/v1/teacher/**").hasAuthority("TEACHER")
                         .requestMatchers("/api/v1/student/**").hasAuthority("STUDENT")
                         .requestMatchers("/api/v1/dev/**").hasAuthority("DEV")

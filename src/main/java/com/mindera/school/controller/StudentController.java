@@ -27,7 +27,7 @@ public class StudentController {
  @PostMapping
  public ResponseEntity<StudentDto> createAccount(@Valid @RequestBody StudentDto studentDto, BindingResult bindingResult) {
   if (bindingResult.hasErrors()) {
-   return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+   return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //! Change this to a custom exception and log the error
   }
   return ResponseEntity.ok(this.studentService.saveOrCreateAccount(studentDto));
  }
