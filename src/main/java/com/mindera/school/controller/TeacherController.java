@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/v1/teacher")
 public class TeacherController {
 
-    TeacherService teacherService;
+    private final TeacherService teacherService;
 
     public TeacherController(TeacherService teacherService) {
         this.teacherService = teacherService;
@@ -23,17 +23,17 @@ public class TeacherController {
 
     @GetMapping(path= "{id}/personalinfo")
     public TeacherDto getPersonalInfo(Long id){
-        return this.teacherService.getPersonalInfo(id);
+        return teacherService.getPersonalInfo(id);
     }
 
     @GetMapping(path = "/students")
     public List<StudentDto> getAllStudents(){
-        return this.teacherService.getAllStudents();
+        return teacherService.getAllStudents();
     }
 
     @PostMapping
     public TeacherDto createAccount(TeacherDto teacherDto) {
-        return this.teacherService.saveOrCreateTeacher(teacherDto);
+        return teacherService.saveOrCreateTeacher(teacherDto);
     }
 
 }

@@ -19,7 +19,7 @@ public class StudentController {
 
  private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 
- StudentService studentService;
+ private final StudentService studentService;
 
  public StudentController(StudentService studentService) {
   this.studentService = studentService;
@@ -27,7 +27,7 @@ public class StudentController {
 
  @GetMapping(path = "/{id}/personalinfo")
     public StudentDto getPersonalInfo(@PathVariable Long id){
-     return this.studentService.getPersonalInfo(id);
+     return studentService.getPersonalInfo(id);
  }
 
  @PostMapping
@@ -42,7 +42,7 @@ public class StudentController {
    logger.error("Validation error in createStudent: {}", errors);
    throw new ValidationException("Validation Error: " + errors);
    }
-  return ResponseEntity.ok(this.studentService.saveOrCreateAccount(studentDto));
+  return ResponseEntity.ok(studentService.saveOrCreateAccount(studentDto));
  }
 
 

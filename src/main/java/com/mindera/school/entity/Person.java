@@ -1,9 +1,9 @@
-package com.mindera.school.controller;
+package com.mindera.school.entity;
 
 import jakarta.persistence.*;
 
-@Entity()
-public class User {
+@Entity
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class User {
     @Column
     private String role;
 
-    public User(String firstName, String lastName, String email, String password, String role) {
+    public Person(String firstName, String lastName, String email, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

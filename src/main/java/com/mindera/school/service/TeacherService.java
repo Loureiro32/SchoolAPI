@@ -15,8 +15,8 @@ import java.util.List;
 @Service
 public class TeacherService {
 
-    TeacherRepository teacherRepository;
-    StudentRepository studentRepository;
+   private final TeacherRepository teacherRepository;
+   private final StudentRepository studentRepository;
 
     public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository) {
         this.teacherRepository = teacherRepository;
@@ -24,15 +24,15 @@ public class TeacherService {
     }
 
     public TeacherDto getPersonalInfo(Long id){
-        return TeacherMapper.INSTANCE.ToTeacherDto(this.teacherRepository.findById(id).orElseThrow(() -> new TeacherNotFoundException("Teacher", "id", id)));
+        return TeacherMapper.INSTANCE.ToTeacherDto(teacherRepository.findById(id).orElseThrow(() -> new TeacherNotFoundException("Teacher", "id", id)));
     }
 
     public List<StudentDto> getAllStudents(){
-        return StudentMapper.INSTANCE.ToStudentDtoList(this.studentRepository.findAll());
+        return StudentMapper.INSTANCE.ToStudentDtoList(studentRepository.findAll());
     }
 
     public TeacherDto saveOrCreateTeacher(TeacherDto teacherDto){
-        this.teacherRepository.save(TeacherMapper.INSTANCE.ToTeacher(teacherDto));
+        teacherRepository.save(TeacherMapper.INSTANCE.ToTeacher(teacherDto));
       return teacherDto;
     }
 
