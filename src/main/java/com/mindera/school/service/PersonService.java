@@ -1,6 +1,5 @@
 package com.mindera.school.service;
 
-import com.mindera.school.entity.Person;
 import com.mindera.school.repository.PersonRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,4 +14,5 @@ public class PersonService {
         this.personRepository = personRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
 }
